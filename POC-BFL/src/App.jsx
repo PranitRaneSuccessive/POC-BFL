@@ -1,11 +1,11 @@
 import AppLayout from './component/AppLayout'
-// import CustomTable from './component/Table'
+import CustomCarousel from './component/CustomCarousel'
 
 function App() {
 
   return (
     <AppLayout>
-      {/* <CustomTable /> */}
+      <CustomCarousel />
     </AppLayout>
   )
 }
