@@ -1,11 +1,12 @@
-import './App.css'
+import AppLayout from './component/AppLayout'
+// import CustomTable from './component/Table'
 
 function App() {
 
   return (
-    <>
-      Test
-    </>
+    <AppLayout>
+      {/* <CustomTable /> */}
+    </AppLayout>
   )
 }
 
