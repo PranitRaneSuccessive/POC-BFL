@@ -4,15 +4,23 @@ import {
   MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
+  StepForwardOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
-const AppLayout = ({ children }) => {
+import { AboutUs } from "./AboutUs";
+const AppLayout = ({ children , setSelectedKey, selectedKey }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  // Handle click event of menu items
+  const handleClick = (e) => {
+    setSelectedKey(e.key);
+  };
+  console.log("selectedKey", selectedKey);
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -20,7 +28,8 @@ const AppLayout = ({ children }) => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          selectedKeys={selectedKey}
+          onClick={handleClick}        
           items={[
             {
               key: '1',
@@ -30,12 +39,12 @@ const AppLayout = ({ children }) => {
             {
               key: '2',
               icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              label: 'Product',
             },
             {
               key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
+              icon: <StepForwardOutlined />,
+              label: 'About Us',
             },
           ]}
         />
