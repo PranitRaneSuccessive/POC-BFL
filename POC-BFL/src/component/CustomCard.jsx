@@ -1,29 +1,20 @@
 import React from 'react';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
-const { Meta } = Card;
+import { Card } from 'antd';
+
 const CustomCard = ({ img }) => (
   <Card
     style={{
       width: 300,
+      margin: '0 auto',  // Ensure the card itself is centered
     }}
     cover={
       <img
         alt="example"
         src={img}
+        style={{ height: 200, objectFit: 'cover' }}
       />
     }
-    actions={[
-      <SettingOutlined key="setting" />,
-      <EditOutlined key="edit" />,
-      <EllipsisOutlined key="ellipsis" />,
-    ]}
-  >
-    <Meta
-      avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
+  />
 );
+
 export default CustomCard;

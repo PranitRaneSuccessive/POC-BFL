@@ -2,40 +2,48 @@ import { useState } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
+  StepForwardOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
-const AppLayout = ({ children }) => {
+
+const AppLayout = ({ children, setSelectedKey, selectedKey }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  // Handle click event of menu items
+  const handleClick = (e) => {
+    setSelectedKey(e.key);
+  };
+
   return (
-    <Layout>
+    <Layout style={{ height: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          selectedKeys={selectedKey}
+          onClick={handleClick}
           items={[
             {
               key: '1',
               icon: <UserOutlined />,
-              label: 'nav 1',
+              label: 'Home',
             },
             {
               key: '2',
               icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              label: 'Product',
             },
             {
               key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
+              icon: <StepForwardOutlined />,
+              label: 'About Us',
             },
           ]}
         />
@@ -73,4 +81,5 @@ const AppLayout = ({ children }) => {
     </Layout>
   );
 };
+
 export default AppLayout;
