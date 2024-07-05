@@ -2,15 +2,14 @@ import { useState } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
   StepForwardOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
-import { AboutUs } from "./AboutUs";
-const AppLayout = ({ children , setSelectedKey, selectedKey }) => {
+
+const AppLayout = ({ children, setSelectedKey, selectedKey }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -20,21 +19,21 @@ const AppLayout = ({ children , setSelectedKey, selectedKey }) => {
   const handleClick = (e) => {
     setSelectedKey(e.key);
   };
-  console.log("selectedKey", selectedKey);
+
   return (
-    <Layout>
+    <Layout style={{ height: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
           mode="inline"
           selectedKeys={selectedKey}
-          onClick={handleClick}        
+          onClick={handleClick}
           items={[
             {
               key: '1',
               icon: <UserOutlined />,
-              label: 'nav 1',
+              label: 'Home',
             },
             {
               key: '2',
@@ -82,4 +81,5 @@ const AppLayout = ({ children , setSelectedKey, selectedKey }) => {
     </Layout>
   );
 };
+
 export default AppLayout;
